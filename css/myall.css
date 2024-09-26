@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+body {
+    font-family: "Zen Maru Gothic", serif;
+    font-optical-sizing: auto;
+}
+.fw-100{
+    font-weight: 100;
+}
+.fw-200{
+    font-weight: 200;
+}
+.fw-300{
+    font-weight: 300;
+}
+.fw-400{
+    font-weight: 400;
+}
+.fw-500{
+    font-weight: 500;
+}
+.fw-600{
+    font-weight: 600;
+}
+.fw-700{
+    font-weight: 700;
+}
+.fw-800{
+    font-weight: 800;
+}
+.fw-900{
+    font-weight: 900;
+}
+:root {
+    --mycolor01: #FDDCEF;
+    --mycolor02: #D5C5E9;
+    --mycolor03: #3A5A69;
+    --mycolor04: #030923;
+    --mycolor05: #F2F4EF;
+    --mycolor06: #C2E3F4;
+    --mycolor07: #EFB730;
+    --mycolor08: #030305;
+    --mycolor09: #f84848;
+    --mycolor10: #ece6e6;
+    --mytextcolor01: #0f0f0f;
+    --mytextcolor02: #faf6f6;
+    --mytextcolor03: #f14c4c;
+}
+
+/* 背景色 */
+.bg-01 {
+    background-color: var(--mycolor03);
+}
+
+.bg-02 {
+    background-color: var(--mycolor02);
+}
+
+.bg-03 {
+    background-color: var(--mycolor09);
+}
+
+.bg-04 {
+    background-color: var(--mycolor10);
+}
+
+/* 按鈕 */
+.bg-btn01 {
+    background-color: var(--mycolor06);
+    border-radius: 5px;
+    box-shadow: 5px 5px 2px 2px var(--mycolor03);
+    margin-right: 10px;
+}
+
+.bg-btn01:hover {
+    background-color: var(--mycolor07);
+    color: var(--mytextcolor02);
+    font-size: 20px;
+    box-shadow: 5px 5px 2px 2px var(--mycolor05);
+}
+
+.bg-btn02 {
+    background-color: var(--mycolor01);
+    border-radius: 5px;
+    box-shadow: 5px 5px 2px 2px var(--mycolor02);
+    margin-right: 10px;
+}
+
+.bg-btn03 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-decoration: none;
+    color: var(--mycolor05);
+    font-size: 20px;
+    background-color: var(--mycolor09);
+    border-radius: 5px;
+    box-shadow: 5px 5px 2px 2px var(--mycolor04);
+    margin-right: 10px;
+}
+
+/* 邊框 */
+.myborder-01 {
+    border: 2px solid var(--mycolor08);
+}
+
+.myborder-02 {
+    border: 2px solid var(--mycolor07);
+}
+
+/* 文字 */
+.text-color01 {
+    color: var(--mytextcolor01);
+}
+
+.text-color02 {
+    color: var(--mytextcolor02);
+}
+
+.text-color03 {
+    color: var(--mytextcolor03);
+}
+
+/* 背景圖 */
+.bg-cover {
+    background-position: center center;
+    background-size: cover;
+}
+
+/* 卷軸特效 外層.box_roller 內層 .roller  */
+.box_roller{
+    position: relative;
+    overflow: hidden;
+}
+.roller{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: -100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box_roller:hover .roller{
+    top: 0;
+    transition: top 2s;
+}
+
+/* table-rwd  */
+@media screen and (max-width: 768px){
+    .table-rwd thead{
+        display: none;
+    }
+    .table-rwd tbody tr{
+        display: block;
+        margin-top: 15px;
+        border: 5px solid var(--mycolor01);
+    }
+    .table-rwd tbody tr td{
+        display: block;
+        overflow: hidden;
+    }
+    .table-rwd tbody tr td::before{
+        content: attr(data-th)" : ";
+        color: var(--mytextcolor03);
+        font-weight: bolder;
+        font-size: 22px;
+        display: block;
+        float: left;
+        width: 30%;
+        text-align: right;
+        padding-right: 15px;
+    }
+    .table-rwd tbody tr td span.table-col{
+        display: block;
+        float: left;
+        width: 70%;
+    }
+}

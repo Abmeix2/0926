@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch6 切版練習</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+        .box01{
+            height: 220px;
+            background-image: url(images/party005.jpg);
+        }
+        .box02{
+            height: 140px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--mycolor01);
+        }
+        .box03{
+            border: 2px solid var(--mycolor05);
+            box-shadow: 2px 2px 5px 4px var(--mycolor05);
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .box03:hover{
+            border: 2px solid var(--mycolor06);
+        }
+        .box03 .h4{
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        @media screen and (min-width: 992px){
+            .box02{
+                width: 220px;
+                height: 220px;
+                border-radius: 120px;
+                background-color: var(--mycolor07);
+            }
+            .box02:hover{
+                background-color: var(--mycolor06);
+                color: var(--mytextcolor03);
+            }
+        }
+        @media screen and (min-width: 1200px){
+            .box02{
+                width: 260px;
+                height: 260px;
+                border-radius: 130px;
+                background-color: var(--mycolor09)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-lg">
+        <!-- 01 -->
+        <div class="row">
+            <div class="col-12 d-none d-sm-block">
+                <div class="box01 bg-cover"></div>
+            </div>
+        </div>
+        <!-- 02 -->
+         <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="box02 h1">選單01</div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="box02 h1">選單02</div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="box02 h1">選單03</div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="box02 h1">選單04</div>
+            </div>
+         </div>
+        <!-- 03 -->
+         <div class="row gy-3">
+            <div class="col-md-6 col-lg-4">
+                <div class="box03 text-center">
+                    <div class="bg-cover" style="background-image: url(images/party003.jpg); height: 220px;"></div>
+                    <div class="h4">旅遊景點介紹001</div>
+                    <p>加拿大開發內容所以情緒，看到如有全面醫藥單位支持讓他迅速本週無人，他們數碼動畫改善信號正在自身早已條例國際將來，美女智。</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="box03 text-center">
+                    <div class="bg-cover" style="background-image: url(images/party004.jpg); height: 220px;"></div>
+                    <div class="h4">旅遊景點介紹002</div>
+                    <p>加拿大開發內容所以情緒，看到如有全面醫藥單位支持讓他迅速本週無人，他們數碼動畫改善信號正在自身早已條例國際將來，美女智。</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="box03 text-center">
+                    <div class="bg-cover" style="background-image: url(images/party005.jpg); height: 220px;"></div>
+                    <div class="h4">旅遊景點介紹005</div>
+                    <p>加拿大開發內容所以情緒，看到如有全面醫藥單位支持讓他迅速本週無人，他們數碼動畫改善信號正在自身早已條例國際將來，美女智。</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="box03 text-center">
+                    <div class="bg-cover" style="background-image: url(images/party009.jpg); height: 220px;"></div>
+                    <div class="h4">旅遊景點介紹004</div>
+                    <p>加拿大開發內容所以情緒，看到如有全面醫藥單位支持讓他迅速本週無人，他們數碼動畫改善信號正在自身早已條例國際將來，美女智。</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="box03 text-center">
+                    <div class="bg-cover" style="background-image: url(images/party008.jpg); height: 220px;"></div>
+                    <div class="h4">旅遊景點介紹005</div>
+                    <p>加拿大開發內容所以情緒，看到如有全面醫藥單位支持讓他迅速本週無人，他們數碼動畫改善信號正在自身早已條例國際將來，美女智。</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="box03 text-center">
+                    <div class="bg-cover" style="background-image: url(images/party007.jpg); height: 220px;"></div>
+                    <div class="h4">旅遊景點介紹006</div>
+                    <p>加拿大開發內容所以情緒，看到如有全面醫藥單位支持讓他迅速本週無人，他們數碼動畫改善信號正在自身早已條例國際將來，美女智。</p>
+                </div>
+            </div>
+         </div>
+        <!-- 04 -->
+         <div class="row">
+            <div class="col-12 d-none d-md-block">
+                <img src="https://fakeimg.pl/1440x200/200" class="img-fluid">
+            </div>
+         </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
