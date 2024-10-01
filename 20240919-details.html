@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品細節</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="css/MarkerCluster.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="css/myall.css" />
+    <link rel="icon" href="images/bunny/logo10.png" type="image/x-icon" />
+     <style>
+        .navbar {
+          background-color: rgb(38, 165, 224); /* 這裡可以改成你想要的藍色值 */
+        }
+     </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">控制台</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="20240730-spa.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="20240919-details.html">|產品細節Product Details</a>
+              </li>
+            </ul>
+            <div>
+                <span class="h3 text-success fw-900">會員: <span class="h2 text-danger fw-900" id="s02_login_username">XXX</span> </span>
+                <button class="btn btn-primary d-none" id="s02_logout_btn">登出</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <div class="container">
+        <div class="h3 text-danger fw-900 my-3">|產品細節<small class="text-muted">Product Details</small></div>
+        <div class="row">
+            <div class="col-md-8">
+                <img src="images/bunny/detail1.png" id="imgFull" class="img-fluid" alt="">
+            
+            <div>
+                <ul class="list-unstyled d-flex justify-content-between flex-nowrap overflow-auto my-3 w-100">
+                    <li>
+                        <img class="bg-cover" onfocus="" onclick="changeImg('1')" src="images/bunny/detail1.png" alt="" style="height: 100px; cursor: pointer;">
+                    </li>
+                    <li>
+                        <img class="bg-cover" onclick="changeImg('2')" src="images/bunny/detail2.png" alt="" style="height: 100px; cursor: pointer;">
+                      </li>
+                      <li>
+                        <img class="bg-cover" onclick="changeImg('3')" src="images/bunny/detail3.png" alt="" style="height: 100px; cursor: pointer;">
+                      </li>
+                      <li>
+                        <img class="bg-cover" onclick="changeImg('4')" src="images/bunny/detail4.png" alt="" style="height: 100px; cursor: pointer;">
+                      </li>
+                      <li>
+                        <img class="bg-cover" onclick="changeImg('5')" src="images/bunny/detail5.png" alt="" style="height: 100px; cursor: pointer;">
+                      </li>
+                      <li>
+                        <img class="bg-cover" onclick="changeImg('6')" src="images/bunny/detail6.png" alt="" style="height: 100px; cursor: pointer;">
+                      </li>
+                      <li>
+                        <img class="bg-cover" onclick="changeImg('7')" src="images/bunny/detail7.png" alt="" style="height: 100px; cursor: pointer;">
+                      </li>
+                      <li>
+                        <img class="bg-cover" onclick="changeImg('8')" src="images/bunny/detail8.png" alt="" style="height: 100px; cursor: pointer;">
+                      </li>
+                </ul>  
+            </div>
+            </div>
+            <div class="col-md-4">
+                <div class="h3"> <span class="text-primary bold">美國OXBOW</span> 提摩西初割牧草</div>
+                <div class="h3">規格: 2kg</div>
+                <div>09/19~09/22 <span class="text-primary">限時下殺↘7折</span></div>
+                 <div class="text-danger">滿1件享7折</div> 
+                <div class="h3">價格: <s>554</s> <span class="text-danger">388 </span>元</div>
+                <div class="h3">原料: 
+                    <span class="text-bg-success badge fw-500">100%天然牧草</span>
+                    <!-- <span class="text-bg-info badge fw-500">奶粉</span>
+                    <span class="text-bg-warning badge fw-500">奶油</span> -->
+                </div>
+                <div class="card-text h3 fw-500 mt-2">簡介: <span class="fw-400">高纖、低鈣、低蛋白質。</span> <br>草食動物都無法抵抗的新鮮香氣
+              </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">數量</label>
+                    <input type="number" class="form-control" min="1" max="100" value="1">
+                </div>
+                <button class="btn btn-danger w-100">確認訂購</button>
+            </div>
+        </div>
+    
+         <div class="footer text-bg-dark h4 text-center py-2 ">
+            Hop & Dine 來遛兔Café
+        </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+         $(function(){
+              //***********確認uid是否存在且合法:(可參考20240730-spa，或815筆記)************
+
+            // 如果uid01不為空
+            if(getCookie("uid01") !=""){
+                // 將uid01傳遞至api確認是否合法
+                // (資料要先轉成json格式，才能傳到後端)
+                var dataJSON = {};
+                dataJSON["uid01"] = getCookie("uid01");
+                console.log(JSON.stringify(dataJSON)); //測試用，確認無誤再傳遞
+
+                $.ajax({
+                    type: "POST",
+                    url: "member-login-check-uid-api.php",
+                    data: JSON.stringify(dataJSON),
+                    dataType: "json",
+                    success: showdata_check_uid,
+                    error: function () {
+                        alert("error-member-login-check-uid-api.php");
+                    }
+                });         
+                
+            }else{
+                alert("尚未登入，請登入會員來使用附加功能!"); 
+                location.href = "20240730-spa.html" 
+            }
+
+    //**************** 登出按鈕監聽**********************
+            $("#s02_logout_btn").click(function(){
+                setCookie("uid01", "", 7);
+                location.href = "20240730-spa.html";
+            });
+
+            
+        }); //主程式end
+
+
+        function changeImg(num){
+          document.getElementById('imgFull').src="images/bunny/detail" + num + ".png";
+        }
+
+        function showdata_check_uid(data){
+            console.log(data);
+            // 已登入成功，並驗證cookie，不用再跳出成功失敗的訊息
+            // 使網頁重整後，畫面維持與登入後的畫面一樣。
+            if (data.state) {
+                 // 顯示登入會員帳號
+                 $("#s02_login_username").text(data.data.Username);
+                // 顯示登出按鈕
+                $("#s02_logout_btn").removeClass("d-none");
+            }
+        }
+
+    // ***********cookie程式，從w3複製即可 (2024-cookie.html有練習)
+        //cookie名稱，cookie的值，cookie的有效時間 
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            let expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+        return "";
+        }        
+      </script>
+</body>
+</html>

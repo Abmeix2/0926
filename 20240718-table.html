@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>產品管理</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/all.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+        <link rel="stylesheet" href="css/MarkerCluster.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <link rel="stylesheet" href="css/myall.css" />
+        <link rel="icon" href="images/bunny/logo10.png" type="image/x-icon" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">控制台</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="20240730-spa.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="20240718-product.html">產品建檔</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="20240718-table.html">產品管理</a>
+                  </li>
+                  <li class="nav-item"></li>
+                  <a class="nav-link" href="20240827-chart.html">Chart分析</a>
+                </li>
+                </ul>
+                <div>
+                    <span class="h3 text-success fw-900">會員: <span class="h2 text-danger fw-900" id="s02_login_username">XXX</span> </span>
+                    <button class="btn btn-primary d-none" id="s02_logout_btn">登出</button>
+                </div>
+              </div>
+            </div>
+          </nav>
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow-lg">
+                        <div class="card-body">
+                            <table
+                                class="table table-striped table-bordered table-rwd"
+                            >
+                                <thead>
+                                    <tr>
+                                        <th>產品編號</th>
+                                        <th>產品名稱</th>
+                                        <th>產品規格</th>
+                                        <th>產品價格</th>
+                                        <th>產品數量</th>
+                                        <th>有效期限</th>
+                                        <th>建檔時間</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="datalist">
+                                    <tr>
+                                        <td data-th="商品編號">001</td>
+                                        <td data-th="商品名稱">美式咖啡</td>
+                                        <td data-th="商品規格">001</td>
+                                        <td data-th="商品價格">65</td>
+                                        <td data-th="商品數量">10</td>
+                                        <td data-th="商品備註">
+                                            領域合理增。
+                                        </td>
+                                        <td data-th="建檔時間">202408050205</td>
+                                        <td>
+                                            <button
+                                                class="btn btn-warning me-2"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateModal"
+                                                data-id="xx"
+                                                data-name="xx"
+                                                data-spec="xx"
+                                                data-price="xx"
+                                                data-num="xx"
+                                                data-remark="xx"
+                                                id="btn_update"
+                                            >
+                                                更新
+                                            </button>
+                                            <button
+                                                class="btn btn-danger"
+                                                data-id="XX"
+                                                id="btn_delete"
+                                            >
+                                                刪除
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- updDateModal 彈出的更新視窗 -->
+        <div
+            class="modal fade"
+            id="updateModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-bg-warning">
+                        <h5
+                            class="modal-title fs-5 fw-900"
+                            id="exampleModalLabel"
+                        >
+                            產品更新
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="p_name" class="form-label">產品名稱(字數3~50)</label>
+                            <textarea name="p_name" id="p_name" class="form-control is-valid"></textarea>
+                            <div class="valid-feedback">輸入符合規定</div>
+                            <div class="invalid-feedback">輸入不符合規定</div>
+                        </div>
+                        <div><h6>產品規格(字數1~20)</h6></div>
+                        <div class="mb-3 form-floating">
+                            <input type="text" class="form-control is-valid" id="p_spec" name="p_spec" list="p_spec_list"
+                            placeholder="">
+                            <label for="p_spec" class="form-label">選擇產品規格</label>
+                            <datalist id="p_spec_list">
+                                <option value="1kg">1kg</option>
+                                <option value="2kg">2kg</option>
+                                <option value="3kg">3kg</option>
+                            </datalist>
+                            <div class="valid-feedback">輸入符合規定</div>
+                            <div class="invalid-feedback">輸入不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="p_price" class="form-label"
+                                >產品價格(1~1000)</label
+                            >
+                            <input
+                                type="number"
+                                class="form-control is-valid"
+                                id="p_price"
+                                name="p_price"
+                                min="0"
+                                max="1000"
+                                value="100"
+                            />
+                            <div class="valid-feedback">輸入符合規定</div>
+                            <div class="invalid-feedback">輸入不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="p_num" class="form-label"
+                                >產品數量(1~100)</label
+                            >
+                            <input
+                                type="number"
+                                class="form-control is-valid"
+                                id="p_num"
+                                name="p_num"
+                                min="0"
+                                max="100"
+                                value="10"
+                            />
+                            <div class="valid-feedback">輸入符合規定</div>
+                            <div class="invalid-feedback">輸入不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="p_remark" class="form-label"
+                                >有效期限(1~30)</label
+                            >
+                            <textarea
+                                name="p_remark"
+                                id="p_remark"
+                                class="form-control is-valid"
+                            ></textarea>
+                            <div class="valid-feedback">輸入符合規定</div>
+                            <div class="invalid-feedback">輸入不符合規定</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            取消
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="modal_btn_update"
+                        >
+                            儲存
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery-3.7.1.min.js"></script>
+        <script src="js/sweetalert2@11.js"></script>
+        <script>
+            var flag_p_name = true;
+            var flag_p_spec = true;
+            var flag_p_price = true;
+            var flag_p_num = true;
+            var flag_p_remark = true;
+            var u_id;
+            
+
+            $(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "20240716-Read.php",
+                    dataType: "json",
+                    async: false,
+                    success: showdata_read,
+                    error: function () {
+                        alert("error-20240716-Read.php");
+                    },
+                });
+
+                // btn_update監聽按鈕
+                $("#datalist #btn_update").click(function () {
+                
+                    console.log($(this).data("id"));
+                    console.log($(this).data("name"));
+                    console.log($(this).data("spec"));
+                    console.log($(this).data("price"));
+                    console.log($(this).data("num"));
+                    console.log($(this).data("remark"));
+
+                  
+                    u_id = $(this).data("id");
+                 
+                    $("#p_name").val($(this).data("name"));
+                    $("#p_spec").val($(this).data("spec"));
+                    $("#p_price").val($(this).data("price"));
+                    $("#p_num").val($(this).data("num"));
+                    $("#p_remark").val($(this).data("remark"));
+                });
+
+                
+                $("#datalist #btn_delete").click(function () {
+                    if (confirm("確認刪除此筆資料?")) {
+               
+                        console.log($(this).data("id"));
+
+                        // {"ID": "xxx"}
+                        var dataJSON = {};
+                        dataJSON["ID"] = $(this).data("id");
+                        console.log(JSON.stringify(dataJSON));
+
+                 
+                        $.ajax({
+                            type: "POST",
+                            url: "20240718-Delete.php",
+                            data: JSON.stringify(dataJSON),
+                            contentType: "application/json;charset=utf-8",
+                            dataType: "json",
+                            success: showdata_delete,
+                            error: function () {
+                                alert("error-20240718-Delete.php");
+                            },
+                        });
+                    }
+                });
+
+       
+                $("#p_name").bind("input propertychange", function(){
+                    if($(this).val().length >2 && $(this).val().length <51){
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_p_name = true;
+                    }else{  
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_p_name = false;
+                    }
+                });
+                
+                $("#p_spec").bind("input propertychange", function(){
+                    if($(this).val().length >0 && $(this).val().length <21){                     
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_p_spec = true;
+                    }else{
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_p_spec = false;
+                    }
+                });
+
+                
+                $("#p_price").bind("input propertychange", function () {
+                    if ($(this).val() > 0 && $(this).val() < 1001) {
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_p_price = true;
+                    } else {
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_p_price = false;
+                    }
+                });
+
+            
+                $("#p_num").bind("input propertychange", function () {
+                    if ($(this).val() > 0 && $(this).val() < 101) {
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_p_num = true;
+                    } else {
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_p_num = false;
+                    }
+                });
+
+             
+                $("#p_remark").bind("input propertychange", function () {
+                    if ($(this).val().length > 0 && $(this).val().length < 31) {
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_p_remark = true;
+                    } else {
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_p_remark = false;
+                    }
+                });
+
+                $("#modal_btn_update").click(function () {
+                    if (
+                        flag_p_name &&
+                        flag_p_spec &&
+                        flag_p_num &&
+                        flag_p_price &&
+                        flag_p_remark
+                    ) {
+                        console.log(u_id);
+                        console.log($("#p_name").val());
+                        console.log($("#p_spec").val());
+                        console.log($("#p_price").val());
+                        console.log($("#p_num").val());
+                        console.log($("#p_remark").val());
+
+                        
+                        var dataJSON = {};
+                        dataJSON["ID"] = u_id;
+                        dataJSON["name"] = $("#p_name").val();
+                        dataJSON["spec"] = $("#p_spec").val();
+                        dataJSON["price"] = $("#p_price").val();
+                        dataJSON["num"] = $("#p_num").val();
+                        dataJSON["remark"] = $("#p_remark").val();
+                        
+                        console.log(JSON.stringify(dataJSON));
+                       
+                        $.ajax({
+                            type: "POST",
+                            url: "20240716-Update.php",
+                            data: JSON.stringify(dataJSON),
+                            contentType: "application/json;charset=utf-8",
+                           
+                            dataType: "json",
+                            success: showdata_update,
+                            error: function () {
+                                alert("error-20240716-Update.php");
+                            },
+                        });
+                    } else {
+                        alert("欄位有錯，請修正!");
+                    }
+                });
+            
+          
+            if(getCookie("uid01") !=""){
+                // 將uid01傳遞至api確認是否合法
+                // (資料要先轉成json格式，才能傳到後端)
+                var dataJSON = {};
+                dataJSON["uid01"] = getCookie("uid01");
+                console.log(JSON.stringify(dataJSON)); //測試用，確認無誤再傳遞
+
+                $.ajax({
+                    type: "POST",
+                    url: "member-login-check-uid-api.php",
+                    data: JSON.stringify(dataJSON),
+                    dataType: "json",
+                    success: showdata_check_uid,
+                    error: function () {
+                        alert("error-member-login-check-uid-api.php");
+                    }
+                });         
+                
+            }else{
+                alert("尚未登入，請登入會員來使用附加功能!"); 
+                location.href = "20240730-spa.html" 
+            }
+
+    //**************** 登出按鈕監聽**********************
+            $("#s02_logout_btn").click(function(){
+                setCookie("uid01", "", 7);
+                location.href = "20240730-spa.html";
+            });
+
+            
+            }); 
+            
+            function showdata_read(data) {
+                console.log(data);
+
+                $("#datalist").empty();
+                data.data.forEach(function (item) {
+                    var strHTML =
+                        '<tr><td data-th="商品編號">' +
+                        item.ID +
+                        '</td><td data-th="商品名稱">' +
+                        item.Name +
+                        '</td><td data-th="商品規格">' +
+                        item.Spec +
+                        '</td><td data-th="商品價格">' +
+                        item.Price +
+                        '</td><td data-th="商品數量">' +
+                        item.Num +
+                        '</td><td data-th="商品備註">' +
+                        item.Remark +
+                        '</td><td data-th="建檔時間">' +
+                        item.Created_at +
+                        '</td><td><button class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#updateModal" data-id="' +
+                        item.ID +
+                        '" data-name="' +
+                        item.Name +
+                        '" data-spec="' +
+                        item.Spec +
+                        '" data-price="' +
+                        item.Price +
+                        '" data-num="' +
+                        item.Num +
+                        '" data-remark="' +
+                        item.Remark +
+                        '" id="btn_update">更新</button><button class="btn btn-danger"  data-id="' +
+                        item.ID +
+                        '" id="btn_delete">刪除</button></td></tr>';
+
+                    $("#datalist").append(strHTML);
+                });
+            }
+
+            function showdata_update(data) {
+              
+                console.log(data);
+                if (data.state) {
+                        Swal.fire({
+                        title: data.message,
+                        showDenyButton: false,
+                        showCancelButton: false,
+                        confirmButtonText: "確認",
+                        
+                        denyButtonText: `Don't save`,
+                    }).then((result) => {
+                       
+                        if (result.isConfirmed) {
+                           
+                            Swal.fire("Saved!", "", "success").then(() => {
+                                location.href = "20240718-table.html";
+                            });
+                        } else if (result.isDenied) {
+                            Swal.fire("Changes are not saved", "", "info");
+                        }
+                    });
+                } else {
+                    alert(data.message + "請找系統維修人員");
+                }
+            }
+
+            function showdata_delete(data) {
+                
+                console.log(data);
+
+                if (data.state) {
+                    alert(data.message);
+                
+                    location.href = "20240718-table.html";
+                } else {
+                    alert(data.message + "請找系統維修人員");
+                }
+            }
+
+            function showdata_check_uid(data){
+            console.log(data);
+          
+            if (data.state) {
+                
+                 $("#s02_login_username").text(data.data.Username);
+                
+                $("#s02_logout_btn").removeClass("d-none");
+            }
+        }
+
+   
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            let expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+        return "";
+        }        
+        </script>
+    </body>
+</html>

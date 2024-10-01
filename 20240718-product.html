@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品建檔</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="css/MarkerCluster.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="css/myall.css" />
+    <link rel="icon" href="images/bunny/logo10.png" type="image/x-icon" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">控制台</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="20240730-spa.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="20240718-product.html">產品建檔</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="20240718-table.html">產品管理</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <div>
+                <span class="h3 text-success fw-900">會員: <span class="h2 text-danger fw-900" id="s02_login_username">XXX</span> </span>
+                <button class="btn btn-primary d-none" id="s02_logout_btn">登出</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <div class="container">
+        <div class="row justify-content-center my-5">
+            <div class="col-6">
+                <div class="card shadow-lg">
+                    <div class="card-header text-bg-warning">
+                        <div class="h3 text-center fw-900">產品建檔</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="p_name" class="form-label">產品名稱(字數3~50)</label>
+                            <textarea name="p_name" id="p_name" class="form-control is-invalid"></textarea>
+                            <div class="valid-feedback">輸入符合規定</div>
+                            <div class="invalid-feedback">輸入不符合規定</div>
+                        </div>
+                        <div><h6>產品規格(字數1~20)</h6></div>
+                        <div class="mb-3 form-floating">
+                            <input type="text" class="form-control is-invalid" id="p_spec" name="p_spec" list="p_spec_list"
+                            placeholder="">
+                            <label for="p_spec" class="form-label">選擇產品規格</label>
+                            <datalist id="p_spec_list">
+                                <option value="1kg">1kg</option>
+                                <option value="2kg">2kg</option>
+                                <option value="3kg">3kg</option>
+                            </datalist>
+                            <div class="valid-feedback">輸入符合規定</div>
+                            <div class="invalid-feedback">輸入不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="p_price" class="form-label">產品價格(1~1000)</label>
+                            <input type="number" class="form-control is-valid" id="p_price" name="p_price" min="0" max="1000" value="100">
+                            <div class="valid-feedback">輸入符合規定</div>
+                            <div class="invalid-feedback">輸入不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="p_num" class="form-label">產品數量(1~100)</label>
+                            <input type="number" class="form-control is-valid" id="p_num" name="p_num" min="0" max="100" value="10">
+                            <div class="valid-feedback">輸入符合規定</div>
+                            <div class="invalid-feedback">輸入不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="p_remark" class="form-label">有效期限(1~30)</label>
+                            <textarea name="p_remark" id="p_remark" class="form-control is-invalid"></textarea>
+                            <div class="valid-feedback">輸入符合規定</div>
+                            <div class="invalid-feedback">輸入不符合規定</div>
+                        </div>
+                        
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-secondary">取消</button>
+                        <button class="btn btn-primary" id="ok_btn">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        // 原本一開始都先預設4個旗子都是降下來的，過關一個，升起一個旗子。全部過關，才可以按下確認鈕。
+        // 但! 因為上面有給price和num預設了初始值，故一開始是符合規定的。(下方再用監聽功能看使用者打字輸入後，是否符合規定)。!!price和num的旗子要預設為true!!。才不會明明符合規定，確認鈕卻按不下去。
+        var flag_p_name = false;
+        var flag_p_spec = false;
+        var flag_p_price = true;
+        var flag_p_num = true;
+        var flag_p_remark = false;
+        $(function(){
+            // 監聽p_name
+            $("#p_name").bind("input propertychange", function(){
+                if($(this).val().length >2 && $(this).val().length <51){
+                    // 符合規定。
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_p_name = true;
+                }else{
+                    // 不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_name = false;
+                }
+            });
+            // 監聽p_spec
+            $("#p_spec").bind("input propertychange", function(){
+                if($(this).val().length >0 && $(this).val().length <21){
+                    // 符合規定。
+                    // 為防止重複出現符合不符合字樣，每次都先假設房間有人，移除對方，清空房間
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_p_spec = true;
+                }else{
+                    // 不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_spec = false;
+                }
+            });
+
+            // 監聽p_price
+            $("#p_price").bind("input propertychange", function(){
+                if($(this).val() >0 && $(this).val() <1001){
+                    // 符合規定。
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_p_price = true;
+                }else{
+                    // 不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_price = false;
+                }
+            });
+
+            // 監聽p_num
+            $("#p_num").bind("input propertychange", function(){
+                if($(this).val() >0 && $(this).val() <101){
+                    // 符合規定。
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_p_num = true;
+                }else{
+                    // 不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_num = false;
+                }
+            });
+
+            // 監聽p_remark
+             $("#p_remark").bind("input propertychange", function(){
+                if($(this).val().length >0 && $(this).val().length <31){
+                    // 符合規定。
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_p_remark = true;
+                }else{
+                    // 不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_remark = false;
+                }
+            });
+
+            $("#ok_btn").click(function(){
+                if (flag_p_name && flag_p_spec && flag_p_price && flag_p_num && flag_p_remark){
+                    console.log($("#p_name").val());
+                    console.log($("#p_spec").val());
+                    console.log($("#p_price").val());
+                    console.log($("#p_num").val());
+                    console.log($("#p_remark").val());
+                    //{"name":"雞腿飯", "price":"100", "num":"2", "remark":"好吃"}
+
+                    // 將值轉為json格式，後端電腦才讀得懂
+                    var dataJSON = {};
+                    dataJSON["name"]   = $("#p_name").val();
+                    dataJSON["spec"]   = $("#p_spec").val();
+                    dataJSON["price"]  = $("#p_price").val();
+                    dataJSON["num"]    = $("#p_num").val();
+                    dataJSON["remark"] = $("#p_remark").val();
+
+                    console.log(JSON.stringify(dataJSON));
+                    //傳遞至後端api
+                    $.ajax({
+                        type: "POST",
+                        url: "20240716-Create_V1.php",
+                        data: JSON.stringify(dataJSON),
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: showdata_create,
+                        error: function(){
+                            alert("error-20240716-Create_V1.php");
+                        }
+                    });
+                }else{
+                    alert("欄位有錯，請修正!");    
+                }
+            });
+
+   //***********確認uid是否存在且合法:(可參考20240730-spa，或815筆記)************
+
+            // 如果uid01不為空
+            if(getCookie("uid01") !=""){
+                // 將uid01傳遞至api確認是否合法
+                // (資料要先轉成json格式，才能傳到後端)
+                var dataJSON = {};
+                dataJSON["uid01"] = getCookie("uid01");
+                console.log(JSON.stringify(dataJSON)); //測試用，確認無誤再傳遞
+
+                $.ajax({
+                    type: "POST",
+                    url: "member-login-check-uid-api.php",
+                    data: JSON.stringify(dataJSON),
+                    dataType: "json",
+                    success: showdata_check_uid,
+                    error: function () {
+                        alert("error-member-login-check-uid-api.php");
+                    }
+                });         
+                
+            }else{
+                alert("尚未登入，請登入會員來使用附加功能!"); 
+                location.href = "20240730-spa.html" 
+            }
+
+    //**************** 登出按鈕監聽**********************
+            $("#s02_logout_btn").click(function(){
+                setCookie("uid01", "", 7);
+                location.href = "20240730-spa.html";
+            });
+
+            
+        }); //主程式end
+
+
+
+        // 副程式
+        function showdata_create(data){
+            console.log(data);
+            if(data.state){
+                alert(data.message);
+                location.href = "20240718-product.html"
+            }else{
+                alert(data.message);
+            }
+        }
+
+        function showdata_check_uid(data){
+            console.log(data);
+            // 已登入成功，並驗證cookie，不用再跳出成功失敗的訊息
+            // 使網頁重整後，畫面維持與登入後的畫面一樣。
+            if (data.state) {
+                 // 顯示登入會員帳號
+                 $("#s02_login_username").text(data.data.Username);
+                // 顯示登出按鈕
+                $("#s02_logout_btn").removeClass("d-none");
+            }
+        }
+
+    // ***********cookie程式，從w3複製即可 (2024-cookie.html有練習)
+        //cookie名稱，cookie的值，cookie的有效時間 
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            let expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+        return "";
+        }        
+
+        
+
+    </script>
+</body>
+</html>
