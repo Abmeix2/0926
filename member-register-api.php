@@ -19,7 +19,7 @@ if (isset($mydata["username"]) && isset($mydata["password"]) && isset($mydata["e
         // 給sql指令
         $sql = "INSERT INTO member(Username, Password, Email) VALUES('$p_username', '$p_password', '$p_email')";
         // 布林值 (只有失敗或成功)，用if else
-        if (execute_sql($link, "testdb", $sql)) {
+        if (execute_sql($link, "if0_37421127_testdb", $sql)) {
             echo '{"state": true, "message" : "註冊成功"}';
         } else {
             echo '{"state": false, "message" : "註冊失敗"}';

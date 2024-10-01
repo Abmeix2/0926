@@ -1,7 +1,7 @@
 <?php
-    $servername = "localhost";
-    $username = "owner";
-    $password = "123456";
+    $servername = "https://sql100.infinityfree.com";
+    $username = "if0_37421127";
+    $password = "Ab202405730";
 
     //建立連線
     $conn = mysqli_connect($servername, $username, $password);

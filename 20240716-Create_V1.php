@@ -14,10 +14,10 @@ if(isset($mydata["name"]) && isset($mydata["spec"]) && isset($mydata["price"]) &
         $p_num = $mydata["num"];
         $p_remark = $mydata["remark"];
     
-        $servername = "localhost";
-        $username = "owner";
-        $password = "123456";
-        $dbname = "testdb";
+        $servername = "https://sql100.infinityfree.com";
+        $username = "if0_37421127";
+        $password = "Ab202405730";
+        $dbname = "if0_37421127_testdb";
     
         $conn = mysqli_connect($servername, $username, $password, $dbname);
         if (!$conn) {

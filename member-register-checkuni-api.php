@@ -14,7 +14,7 @@ if (isset($mydata["username"])) {
 
         // 給sql指令
         $sql = "SELECT Username FROM member WHERE Username = '$p_username'";
-        $result = execute_sql($link, "testdb", $sql);
+        $result = execute_sql($link, "if0_37421127_testdb", $sql);
             // 若資料庫搜尋結果為0，帳號不存在，可以使用
         if (mysqli_num_rows($result) == 0) {
             echo '{"state": true, "message" : "帳號不存在，可以使用"}';

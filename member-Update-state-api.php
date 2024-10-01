@@ -22,7 +22,7 @@ if (isset($mydata["id"]) && isset($mydata["state"])) {
         $sql = "UPDATE member SET State = '$p_state' WHERE ID = '$p_id'";
         
         // 執行上方sql指令
-        if(execute_sql($link, "testdb", $sql)){
+        if(execute_sql($link, "if0_37421127_testdb", $sql)){
             echo '{"state": true, "message" : "會員狀態更新成功"}';
         }else{
             echo '{"state": true, "message" : "會員更新失敗和錯誤代碼等"}';

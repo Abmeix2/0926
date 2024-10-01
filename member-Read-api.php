@@ -11,7 +11,7 @@
         // 給sql指令: 按ID遞減，撈出(select)資料庫中的ID, 帳號、Email、及Uid01等欄位資料。
         $sql = "SELECT ID, Username, Email, Uid01, State, Level, Created_at FROM member ORDER BY ID DESC";
         // 執行上方sql指令，並將結果設給$result
-        $result = execute_sql($link, "testdb", $sql);
+        $result = execute_sql($link, "if0_37421127_testdb", $sql);
        
         // 將result，一筆一筆列出來，直到沒有資料可撈。因為很多筆，所以要用陣列array()呈現
         $mydata = array();

@@ -1,12 +1,12 @@
 <?php
     function create_connection()
     {
-        // $conn = mysqli_connect("localhost", "owner", "123456")
+        // $conn = mysqli_connect("https://sql100.infinityfree.com", "owner", "123456")
         // if($conn){
         //     die("連線失敗:" . mysqli_connect_error())
         // }
 
-        $conn = mysqli_connect("localhost", "owner", "123456")
+        $conn = mysqli_connect("https://sql100.infinityfree.com", "if0_37421127", "Ab202405730")
             or die("連線失敗:" . mysqli_connect_error());
         
         return $conn;

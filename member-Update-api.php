@@ -21,7 +21,7 @@ if (isset($mydata["id"]) && isset($mydata["email"])) {
         // 給sql指令: 
         $sql = "UPDATE member SET Email = '$p_email' WHERE ID = '$p_id'";
         // 執行上方sql指令
-        if(execute_sql($link, "testdb", $sql)){
+        if(execute_sql($link, "if0_37421127_testdb", $sql)){
             echo '{"state": true, "message" : "更新成功"}';
         }else{
             echo '{"state": true, "message" : "註冊失敗和錯誤代碼等"}';

@@ -9,7 +9,7 @@ $link = create_connection();
 // 給sql指令:
 $sql = "SELECT COUNT(Level) as level_num, Level FROM member GROUP BY Level ORDER BY `member`.`Level` DESC";
 // 執行上方sql指令，並將結果設給$result
-$result = execute_sql($link, "testdb", $sql);
+$result = execute_sql($link, "if0_37421127_testdb", $sql);
 
 // 將result，一筆一筆列出來，直到沒有資料可撈。因為很多筆，所以要用陣列array()呈現
 $mydata = array();
