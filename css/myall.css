@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet"');
+        
 body {
     font-family: "Zen Maru Gothic", serif;
-    font-optical-sizing: auto;
 }
+
 .fw-100{
     font-weight: 100;
 }
@@ -30,151 +31,414 @@ body {
 .fw-900{
     font-weight: 900;
 }
-:root {
-    --mycolor01: #FDDCEF;
-    --mycolor02: #D5C5E9;
-    --mycolor03: #3A5A69;
-    --mycolor04: #030923;
-    --mycolor05: #F2F4EF;
-    --mycolor06: #C2E3F4;
-    --mycolor07: #EFB730;
-    --mycolor08: #030305;
-    --mycolor09: #f84848;
-    --mycolor10: #ece6e6;
-    --mytextcolor01: #0f0f0f;
-    --mytextcolor02: #faf6f6;
-    --mytextcolor03: #f14c4c;
-}
 
-/* 背景色 */
-.bg-01 {
-    background-color: var(--mycolor03);
-}
 
-.bg-02 {
+
+
+:root{
+    --mycolor01: #C4CBEA;
+    --mycolor02: #f3bbe0;
+    --mycolor03: #B29D7C;
+    --mycolor04: #E4CDD4;
+    --mycolor05: #F2DFE4;
+    --mycolor06: #F3EDE7;
+    --mycolor07: #dbc8a9;
+    --mycolor08: #ecebe7;
+    --mycolor09: #D7A133;
+    --mycolor10: #1B3F59 ;
+    --mycolor11: #912E21;
+    --mycolor12: #D9CAC2;
+    --mycolor13: #FBE7C6 ;
+    --mycolor14: #B4F8C8;
+    --mycolor15: #A0E7E5 ;
+    --mycolor16: #FFAEBC;
+    --mycolor17: #58ABE5;
+    --mycolor18: #F6C324;
+    --mycolor19: #FF7FAD;
+    --mycolor20: #A9FED8;
+    --mycolor21: #00B1B0;
+    --mycolor22: #FF8370;
+    --mycolor23: #FEC84D;
+    --mycolor24: #E42256;
+    --mycolor25: #508FF7;
+    --mycolor26: #98B66E ;
+    --mycolor27: #C5E5A5;
+    --mycolor28: #0C6170;
+    --mycolor29: #37BEB0;
+    --mycolor30: #0C6170;
+    --mycolor31: #1F1F46;
+    --mycolor32: #E9E2DC;
+    --mycolor33: #85452E;
+    --mycolor34: #D99C2D;
+    --mycolor35: ;
+    --mycolor36: ;
+    --mycolor37: ;
+    --mycolor38: ;
+    --mytextcolor01: #503d2a;
+    --mytextcolor02: #8f6d8a;
+    --mytextcolor03: #ffff;
+    --mytextcolor04: #e1ff90;
+    --mytextcolor05: #912E21;
+    --mytextcolor06: #B4F8C8;
+    --mytextcolor07: #FFAEBC;
+    --mytextcolor08: #3160e4;
+    --mytextcolor09: hwb(42 53% 5%);
+    --mytextcolor10: #d82008;
+    --mytextcolor11: #508FF7;
+    --mytextcolor12: #98B66E;
+    --mytextcolor13: #C5E5A5;
+    --mytextcolor14: #0C6170;
+    --mytextcolor15: #37BEB0;
+    --mytextcolor16: #1F1F46;
+    --mytextcolor17: #85452E;
+    --mytextcolor18: #D99C2D;
+    --mytextcolor19: #ebae53;;
+}
+ 
+/*背景色*/
+.bg-01{
+    background-color: var(--mycolor07);
+}
+.bg-02{
+    background-color: var(--mycolor06);
+}
+.bg-03{
+    background-color: var(--mycolor04);
+}
+.bg-04{
     background-color: var(--mycolor02);
 }
-
-.bg-03 {
+.bg-05{
+    background-color: var(--mycolor01);
+}
+.bg-06{
+    background-color:rgb(0, 0, 0, 0.1);
+}
+.bg-07{
+    background-color: var(--mycolor07);
+}
+.bg-08{
+    background-color: var(--mycolor08);
+}
+.bg-09{
     background-color: var(--mycolor09);
 }
-
-.bg-04 {
+.bg-10{
     background-color: var(--mycolor10);
 }
-
-/* 按鈕 */
-.bg-btn01 {
-    background-color: var(--mycolor06);
-    border-radius: 5px;
-    box-shadow: 5px 5px 2px 2px var(--mycolor03);
-    margin-right: 10px;
+.bg-11{
+    background-color: var(--mycolor11);
+}
+.bg-12{
+    background-color: var(--mycolor12);
+}
+.bg-13{
+    background-color: var(--mycolor13);
+}
+.bg-14{
+    background-color: var(--mycolor14);
+}
+.bg-15{
+    background-color: var(--mycolor15);
+}
+.bg-16{
+    background-color: var(--mycolor16);
+}
+.bg-17{
+    background-color: var(--mycolor17);
+}
+.bg-18{
+    background-color: var(--mycolor18);
+}
+.bg-19{
+    background-color: var(--mycolor19);
+}
+.bg-20{
+    background-color: var(--mycolor20);
 }
 
-.bg-btn01:hover {
-    background-color: var(--mycolor07);
-    color: var(--mytextcolor02);
+.bg-21{
+    background-color: var(--mycolor21);
+}
+.bg-22{
+    background-color: var(--mycolor22);
+}
+.bg-23{
+    background-color: var(--mycolor23);
+}
+.bg-24{
+    background-color: var(--mycolor24);
+}
+.bg-25{
+    background-color: var(--mycolor25);
+}
+.bg-26{
+    background-color: var(--mycolor26);
+}
+.bg-27{
+    background-color: var(--mycolor27);
+}
+.bg-28{
+    background-color: var(--mycolor28);
+}
+.bg-29{
+    background-color: var(--mycolor29);
+}
+.bg-30{
+    background-color: var(--mycolor30);
+}
+.bg-31{
+    background-color: var(--mycolor31);
+}
+.bg-32{
+    background-color: var(--mycolor32);
+}
+.bg-33{
+    background-color: var(--mycolor33);
+}
+.bg-34{
+    background-color: var(--mycolor34);
+}
+
+/*按鈕*/
+.bg-btn01{
+    background-color: var(--mycolor02);
+    border-radius: 10px;
+    box-shadow:5px 5px 2px 2px var(--mycolor03);
+    margin-right: 10px;
+    padding: 5px;
+    text-decoration: none;
+}
+.bg-btn01:hover{
+    background-color: var(--mycolor02);
+    color: var(--mytextcolor01);
     font-size: 20px;
-    box-shadow: 5px 5px 2px 2px var(--mycolor05);
+    box-shadow:5px 5px 2px 2px var(--mycolor03);
 }
-
-.bg-btn02 {
+.bg-btn02{
     background-color: var(--mycolor01);
-    border-radius: 5px;
-    box-shadow: 5px 5px 2px 2px var(--mycolor02);
+    border-radius: 10px;
+    box-shadow:5px 5px 2px 2px var(--mycolor03);
     margin-right: 10px;
+    padding: 5px;
 }
-
-.bg-btn03 {
+.bg-btn02:hover{
+    background-color: var(--mycolor01);
+    color: var(--mytextcolor01);
+    font-size: 20px;
+    box-shadow:5px 5px 2px 2px var(--mycolor03);
+}
+.bg-btn03{
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 20px;
     padding-right: 20px;
     text-decoration: none;
-    color: var(--mycolor05);
-    font-size: 20px;
-    background-color: var(--mycolor09);
-    border-radius: 5px;
-    box-shadow: 5px 5px 2px 2px var(--mycolor04);
+    color:var(--mytextcolor01);
+    font-size: 16px;
+    background-color: var(--mycolor02);
+    border-radius: 10px;
+    box-shadow:5px 5px 2px 2px var(--mycolor03);
     margin-right: 10px;
 }
-
-/* 邊框 */
-.myborder-01 {
-    border: 2px solid var(--mycolor08);
+.bg-btn03:hover{
+    background-color: var(--mycolor01);
+    color: var(--mytextcolor01);
+    font-size: 20px;
+    box-shadow:5px 5px 2px 2px var(--mycolor03);
 }
 
-.myborder-02 {
-    border: 2px solid var(--mycolor07);
+/* 外框色*/
+.myborder-01{
+    border: var(--mycolor02) 5px solid;
 }
 
-/* 文字 */
-.text-color01 {
+/* 文字顏色*/
+.text-color01{
     color: var(--mytextcolor01);
 }
-
-.text-color02 {
+.text-color02{
     color: var(--mytextcolor02);
 }
-
-.text-color03 {
+.text-color03{
     color: var(--mytextcolor03);
 }
+.text-color04{
+    color: var(--mytextcolor04);
+}
+.text-color05{
+    color: var(--mytextcolor05);
+}
+.text-color06{
+    color: var(--mytextcolor06);
+}
+.text-color07{
+    color: var(--mytextcolor07);
+}
+.text-color08{
+    color: var(--mytextcolor08);
+}
+.text-color09{
+    color: var(--mytextcolor09);
+}
+.text-color10{
+    color: var(--mytextcolor10);
+}
+.text-color11{
+    color: var(--mytextcolor11);
+}
+.text-color12{
+    color: var(--mytextcolor12);
+}
+.text-color13{
+    color: var(--mytextcolor13);
+}
+.text-color14{
+    color: var(--mytextcolor14);
+}
+.text-color15{
+    color: var(--mytextcolor15);
+}
+.text-color16{
+    color: var(--mytextcolor16);
+}
+.text-color17{
+    color: var(--mytextcolor17);
+}
+.text-color18{
+    color: var(--mytextcolor18);
+}
+.text-color19{
+    color: var(--mytextcolor19);
+}
+.text-color20{
+    color: var(--mytextcolor20);
+}
 
-/* 背景圖 */
-.bg-cover {
+
+
+.card-text > .badge:nth-child(1){
+    background-color: #f8d719; 
+    color: #ffff;
+}
+.card-text > .badge:nth-child(2){
+    background-color: #d4100a; 
+    color: #ffff;
+}
+.card-text > .badge:nth-child(3){
+    background-color: #0e9c09;
+    color: #ffff;
+}
+.card-text > .badge:nth-child(4){
+    background-color: #18d1f1; 
+    color: #130202;
+}
+.card-text > .badge:nth-child(5){
+    background-color: #7811a1;  
+    color: #ffff;
+}
+
+/* 背景圖*/
+.bg-cover{
     background-position: center center;
     background-size: cover;
 }
 
-/* 卷軸特效 外層.box_roller 內層 .roller  */
+/* 卷軸特效設定 */
 .box_roller{
-    position: relative;
-    overflow: hidden;
+    position: relative;  /* 外層*/
+    overflow: hidden; 
 }
 .roller{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    top: -100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: absolute;   /* 內層*/
+    width: 100%;                                /* roller佔box寬的100%*/
+    height: 100%;                               /* roller佔box高的100%*/
+    background-color: rgba(0, 0, 0, 0.2);     /* 透明度*/
+    top: -100%;                                  /* 起始位置*/
+    left: 0;                                  /* 在box中，靠左對齊*/
+    display: flex;                            /* 字水平*/
+    justify-content: center;                  /* 在box中 水平置中*/
+    align-items: center;                      /* 在box中 垂直置中*/
 }
-.box_roller:hover .roller{
-    top: 0;
-    transition: top 2s;
+.box_roller:hover .roller{                     /* hover在box_roller時，roller的變化*/
+        top: 0;
+        transition: top 2s;
+    }
+
+    /* table 響應式 rwd */
+    @media screen and (max-width: 768px){
+        .table-rwd thead{
+            display: none;
+        }
+        .table-rwd tbody tr{
+            display: block;
+            margin-top: 15px;
+            border: 5px solid var(--mycolor01);
+        }
+        .table-rwd tbody tr td{
+            display: block;
+            overflow: hidden;
+        }
+        .table-rwd tbody tr td::before{
+            content: attr(data-th)" : ";
+            color: var(--mytextcolor01);
+            font-weight: bolder;
+            font-size: 22px;
+            display: block;
+            float: left;
+            width: 30%;
+            text-align: right;
+            padding-right: 15px;
+        }
+        .table-rwd tbody tr td span.table-col{
+            display: block;
+            float: left;
+            width: 70%;
+        }
+    }
+
+/* timeline */
+.timeline-section{
+    position: relative;        /* 外層*/
+}
+.timeline-section::before{ 
+    position: absolute;         /* 內層*/
+    content: "";
+    top: 10px;                                        /* timeline垂直直線距上方的距離*/
+    bottom: 10px;                                     /* timeline垂直直線距下方的距離*/
+    width:8px;                                        /* timeline垂直直線的寬度*/
+    background-color: var(--mycolor03);                /* 中間直線底色*/
+    left: 50%;                                        /*起始位置為頁面50%處 */
+    transform: translateX(-50%);                     /*非正中央，要往左拉回圖形的一半寬度，故用-50% */
+}
+.timeline-section-pointer{      
+    position: relative;                 /* 外層*/
+}
+.timeline-section-pointer::before{
+    position: absolute;                /* 內層*/
+    content: "";
+    width: 15px;                                         /* 圖案的寬度*/
+    height: 15px;                                         /* 圖案的高度*/
+    background-color: var(--mycolor08);                  /* 圖案底色*/
+    border-radius: 50%;                     /* 使原本正方形圖形 變 圓形!   圓形的半徑為正方形寬度的一半，故打 50%。 
+                                             也可打 7.5px(即15px/2)*/
+    left: 50%;                              /*起始位置為頁面50%處 */
+    transform: translateX(-50%);            /*非正中央，要往左拉回圖案的一半寬度，故用-50% */
+    top: 10%;                               /* 圖案距上方的距離*/   
+    border:3px solid var(--mycolor03)       /* 使圖案變空心，並設圖案外框色*/ 
 }
 
-/* table-rwd  */
-@media screen and (max-width: 768px){
-    .table-rwd thead{
-        display: none;
-    }
-    .table-rwd tbody tr{
-        display: block;
-        margin-top: 15px;
-        border: 5px solid var(--mycolor01);
-    }
-    .table-rwd tbody tr td{
-        display: block;
-        overflow: hidden;
-    }
-    .table-rwd tbody tr td::before{
-        content: attr(data-th)" : ";
-        color: var(--mytextcolor03);
-        font-weight: bolder;
-        font-size: 22px;
-        display: block;
-        float: left;
-        width: 30%;
-        text-align: right;
-        padding-right: 15px;
-    }
-    .table-rwd tbody tr td span.table-col{
-        display: block;
-        float: left;
-        width: 70%;
-    }
+.timeline-section-pointer:hover::before{     /* hover要寫在 before前面，代表hover在 */
+    width: 26px;                            /* timeline-section-pointer時，before(圓圈)會有什麼變化。*/
+    height: 26px;
+    border: 6px solid var(--mycolor02);
 }
+@media screen and (max-width: 768px){              /* 即小於md(手機版面)時，直線和圓圈要在哪*/
+.timeline-section::before{
+    left: -10px;                                  /* 線靠左。先用0，再自己根據網頁樣子微調 */
+}
+.timeline-section-pointer::before{
+    left: 3px;                                     /* 圓圈靠左。先用0，再自己根據網頁樣子微調*/
+}
+}
+
